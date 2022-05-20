@@ -55,3 +55,16 @@ function titleAnimation() {
     
 
 }
+
+function changeTechologies() {
+    let elementid = document.getElementById('i-teach');
+    const techArray = ['NUMPY','REACT','REDUX','NODE','MONGODB','PANDAS'];
+
+    let index = 0;
+    setInterval(() => {
+        if(index >= techArray.length) index = 0;
+        elementid.innerHTML = techArray[index];
+        index++;
+    },2000);
+}
+changeTechologies();
