@@ -1,16 +1,13 @@
 function clicked(id){
     let elementid = document.getElementById(id);
-    
-    elementid.addEventListener('click',() =>{
-        elementid.style.backgroundColor ="rgb(255, 234, 234)";
-        elementid.style.fontSize = '22px';
-        elementid.style.transition = 'backgroundcolor 0.15s, fontSize 0.25s';
-        setTimeout( () => {
-            elementid.style.backgroundColor = 'rgb(249, 249, 249)';
-            elementid.style.fontSize = '20px';
-            elementid.style.transition = 'backgroundcolor 0.25s, fontSize 0.25s';
-        },1000);
-    });
+    elementid.style.backgroundColor ="rgb(255, 234, 234)";
+    elementid.style.fontSize = '22px';
+    elementid.style.transition = 'backgroundcolor 0.15s, fontSize 0.25s';
+    setTimeout( () => {
+        elementid.style.backgroundColor = 'rgb(249, 249, 249)';
+        elementid.style.fontSize = '20px';
+        elementid.style.transition = 'backgroundcolor 0.25s, fontSize 0.25s';
+    },1000);
 }
 
 function emojiChanging() {
@@ -46,25 +43,35 @@ function titleAnimation() {
             elementid.style.paddingLeft = marginn+'px';
             marginn = marginn + increase;
             newopacity = newopacity + opacityIncrease;
-        },240);
+        },150);
         setTimeout(() => {
             clearInterval(moving);
         }, 800);
         index++;
     },2000);
-    
-
 }
 
 function changeTechologies() {
     let elementid = document.getElementById('i-teach');
-    const techArray = ['NUMPY','REACT','REDUX','NODE','MONGODB','PANDAS'];
+    const techObj =  [{ name: "NUMPY", color: "#46719E" }, { name: "REACT", color: "#89D9F7" }, { name: "REDUX", color: "#8060BE" }, {name: "NODE", color: "#598949" }, {name: "MONGODB", color: "#58AC65" }, { name: "PANDAS", color: "#46719E"}, {name: "JAVASCRIPT", color: "#F9EA79"}, {name: "HTML", color: "#FAE8DC"} ];
 
     let index = 0;
+    
     setInterval(() => {
-        if(index >= techArray.length) index = 0;
-        elementid.innerHTML = techArray[index];
+        let opacity = 0.2;
+        elementid.style.opacity = 0.4;
+        if(index >= techObj.length) index = 0;
+        elementid.innerHTML = techObj[index].name;
+        elementid.style.color = techObj[index].color;
         index++;
+        
+        let change = setInterval( () => {
+            elementid.style.opacity = opacity;
+            elementid.style.transition = 'opacity 0.5s';
+            opacity = opacity + 0.25;
+        },150);
+        setTimeout(() => {clearInterval(change);},800);
+        
     },2000);
 }
 changeTechologies();
